@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOB INTERVIEW CLASS</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        red: {
+                            500: '#ef4444',
+                        },
+                        blue: {
+                            500: '#3b82f6',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body
+    class="font-sans bg-gray-50 text-gray-900 antialiased overflow-x-hidden selection:bg-blue-500 selection:text-white">
+
+    <!-- HEADER / NAVBAR -->
+    <header id="header"
+        class="fixed w-full top-0 z-50 transition-all duration-300 py-4 bg-white/80 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
+            <!-- Logo / Class Name -->
+            <a href="#"
+                class="font-poppins font-bold text-2xl tracking-tight bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">
+                JOB INTERVIEW CLASS
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#our-class" class="text-sm font-medium hover:text-blue-500 transition-colors nav-link">Our
+                    Class</a>
+                <a href="#documentation"
+                    class="text-sm font-medium hover:text-blue-500 transition-colors nav-link">Documentation</a>
+                <a href="#messages"
+                    class="text-sm font-medium hover:text-blue-500 transition-colors nav-link">Messages</a>
+                <a href="#quotes" class="text-sm font-medium hover:text-blue-500 transition-colors nav-link">Quotes</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-700 hover:text-blue-500 focus:outline-none">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav (Hidden by default) -->
+        <div id="mobile-menu"
+            class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg border-t border-gray-100 flex flex-col space-y-4 py-6 px-6">
+            <a href="#our-class" class="mobile-link text-base font-medium">Our Class</a>
+            <a href="#documentation" class="mobile-link text-base font-medium">Documentation</a>
+            <a href="#messages" class="mobile-link text-base font-medium">Messages</a>
+            <a href="#quotes" class="mobile-link text-base font-medium">Quotes</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section
+        class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden flex items-center justify-center min-h-[80vh]">
+        <!-- Background Gradient Blobs -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+            <div
+                class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-red-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob">
+            </div>
+            <div
+                class="absolute top-[20%] right-[-10%] w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000">
+            </div>
+            <div
+                class="absolute bottom-[-20%] left-[20%] w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000">
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6 text-center reveal">
+            <h1 class="font-poppins text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-gray-900">
+                Welcome to <br />
+                <span class="bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">JOB INTERVIEW
+                    CLASS</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-10">
+                A collection of our memories, struggles, and unforgettable moments together. We are more than just a
+                class, we are a family.<br>
+                <span
+                    class="inline-block mt-3 px-4 py-1 bg-blue-100 text-blue-600 rounded-full font-medium text-sm">Period:
+                    April 10, 2026</span>
+            </p>
+            <a href="#our-class"
+                class="inline-block px-8 py-4 bg-gray-900 text-white rounded-full font-medium hover:bg-gradient-to-r hover:from-red-500 hover:to-blue-500 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                Explore Memories
+            </a>
+        </div>
+    </section>
+
+    <!-- OUR CLASS SECTION -->
+    <section id="our-class" class="py-24 bg-white relative">
+        <div class="container mx-auto px-6 mb-12 reveal">
+            <h2 class="font-poppins text-4xl font-bold text-center mb-4">Our <span class="text-blue-500">Class</span>
+            </h2>
+            <p class="text-center text-gray-500 max-w-xl mx-auto">Meet the amazing individuals who make up our
+                incredible family.</p>
+        </div>
+
+        <!-- Infinite Horizontal Carousel -->
+        <div class="w-full overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden py-10"
+            id="class-carousel-wrapper">
+            <div class="carousel-track flex gap-6 px-4" id="class-carousel">
+                <!-- 1 -->
+                <div
+                    class="member-card relative group flex-shrink-0 w-56 h-72 md:w-64 md:h-80 rounded-2xl overflow-hidden shadow-lg cursor-pointer">
+                    <img src="assets/ourclass/Anam musholli.jpg" alt="Anam musholli"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h3
+                            class="text-white font-poppins font-bold text-lg md:text-xl translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            Anam musholli</h3>
+                        <p
+                            class="text-gray-300 text-sm translate-y-4  group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                            @anam_musholli</p>
+                    </div>
+                </div>
+                <!-- 2 -->
+                <div
+                    class="member-card relative group flex-shrink-0 w-56 h-72 md:w-64 md:h-80 rounded-2xl overflow-hidden shadow-lg cursor-pointer">
+                    <img src="assets/ourclass/Ahmad Sultonul Haramayn.jpg" alt="Ahmad Sultonul Haramayn"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h3
+                            class="text-white font-poppins font-bold text-lg md:text-xl translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            Ahmad Sultonul Haramayn</h3>
+                        <p
+                            class="text-gray-300 text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                            @sulton_haramayn</p>
+                    </div>
+                </div>
+                <!-- 3 -->
+                <div
+                    class="member-card relative group flex-shrink-0 w-56 h-72 md:w-64 md:h-80 rounded-2xl overflow-hidden shadow-lg cursor-pointer">
+                    <img src="assets/ourclass/Arransyah Mahogra Istiawan.jpg" alt="Arransyah Mahogra Istiawan"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h3
+                            class="text-white font-poppins font-bold text-lg md:text-xl translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            Arransyah Mahogra Istiawan</h3>
+                        <p
+                            class="text-gray-300 text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                            @aarraawwnn</p>
+                    </div>
+                </div>
+                <!-- 4 -->
+                <div
+                    class="member-card relative group flex-shrink-0 w-56 h-72 md:w-64 md:h-80 rounded-2xl overflow-hidden shadow-lg cursor-pointer">
+                    <img src="assets/ourclass/Sarifatul Azizah.jpeg" alt="Sarifatul Azizah"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h3
+                            class="text-white font-poppins font-bold text-lg md:text-xl translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            Sarifatul Azizah</h3>
+                        <p
+                            class="text-gray-300 text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                            @syaripaa_</p>
+                    </div>
+                </div>
+                <!-- 5 -->
+                <div
+                    class="member-card relative group flex-shrink-0 w-56 h-72 md:w-64 md:h-80 rounded-2xl overflow-hidden shadow-lg cursor-pointer">
+                    <img src="assets/ourclass/Glory Naomi Parhusip.jpg" alt="Glory Naomi Parhusip"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h3
+                            class="text-white font-poppins font-bold text-lg md:text-xl translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            Glory Naomi Parhusip</h3>
+                        <p
+                            class="text-gray-300 text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                            @naomi_parhusip</p>
+                    </div>
+                </div>
+                <!-- 6 -->
+                <div
+                    class="member-card relative group flex-shrink-0 w-56 h-72 md:w-64 md:h-80 rounded-2xl overflow-hidden shadow-lg cursor-pointer">
+                    <img src="assets/ourclass/Sultan Nauval Hakim.jpg" alt="Sultan Nauval Hakim"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h3
+                            class="text-white font-poppins font-bold text-lg md:text-xl translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            Sultan Nauval Hakim</h3>
+                        <p
+                            class="text-gray-300 text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                            @sultannauvalh_</p>
+                    </div>
+                </div>
+                <!-- 7 -->
+                <div
+                    class="member-card relative group flex-shrink-0 w-56 h-72 md:w-64 md:h-80 rounded-2xl overflow-hidden shadow-lg cursor-pointer">
+                    <img src="assets/ourclass/Herlando Prayitno.jpg" alt="Herlando Prayitno"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h3
+                            class="text-white font-poppins font-bold text-lg md:text-xl translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            Herlando Prayitno</h3>
+                        <p
+                            class="text-gray-300 text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                            @andonando_15</p>
+                    </div>
+                </div>
+                <!-- 8 -->
+                <div
+                    class="member-card relative group flex-shrink-0 w-56 h-72 md:w-64 md:h-80 rounded-2xl overflow-hidden shadow-lg cursor-pointer">
+                    <img src="assets/ourclass/Eva Purbaningrum.jpeg" alt="Eva Purbaningrum"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h3
+                            class="text-white font-poppins font-bold text-lg md:text-xl translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            Eva Purbaningrum</h3>
+                        <p
+                            class="text-gray-300 text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                            @evapurbaningrum</p>
+                    </div>
+                </div>
+                <!-- 9 -->
+                <div
+                    class="member-card relative group flex-shrink-0 w-56 h-72 md:w-64 md:h-80 rounded-2xl overflow-hidden shadow-lg cursor-pointer">
+                    <img src="assets/ourclass/Ihsan.jpg" alt="Ihsan"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h3
+                            class="text-white font-poppins font-bold text-lg md:text-xl translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            Ihsan</h3>
+                        <p
+                            class="text-gray-300 text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                            @isantuy_</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DOCUMENTATION SECTION -->
+    <section id="documentation" class=" bg-gray-50">
+        <div class="container mx-auto px-6 reveal">
+            <h2 class="font-poppins text-4xl font-bold text-center mb-16">Our <span
+                    class="text-red-500">Documentation</span></h2>
+
+            <!-- 1. Class Documentation (Grid) -->
+            <div class="mb-20">
+                <h3 class="text-2xl font-bold mb-8 border-l-4 border-blue-500 pl-4">Class Activities</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[200px]"
+                    id="class-gallery">
+                    <div
+                        class="gallery-item rounded-xl overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition-shadow relative group md:col-span-2 md:row-span-2">
+                        <img src="assets/dokumentasi-class/WhatsApp Image 2026-04-23 at 12.01.43 PM.jpeg"
+                            alt="Class Activity"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            loading="lazy">
+                        <div
+                            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <i class="fa-solid fa-expand text-white text-3xl"></i>
+                        </div>
+                    </div>
+                    <div
+                        class="gallery-item rounded-xl overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition-shadow relative group">
+                        <img src="assets/dokumentasi-class/WhatsApp Image 2026-04-23 at 12.01.43 PMa.jpeg"
+                            alt="Class Activity"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            loading="lazy">
+                        <div
+                            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <i class="fa-solid fa-expand text-white text-3xl"></i>
+                        </div>
+                    </div>
+                    <div
+                        class="gallery-item rounded-xl overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition-shadow relative group">
+                        <img src="assets/dokumentasi-class/WhatsApp Image 2026-04-23 at 12.01.43 PMb.jpeg"
+                            alt="Class Activity"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            loading="lazy">
+                        <div
+                            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <i class="fa-solid fa-expand text-white text-3xl"></i>
+                        </div>
+                    </div>
+                    <div
+                        class="gallery-item rounded-xl overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition-shadow relative group">
+                        <img src="assets/dokumentasi-class/WhatsApp Image 2026-04-23 at 12.01.44 PMc.jpeg"
+                            alt="Class Activity"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            loading="lazy">
+                        <div
+                            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <i class="fa-solid fa-expand text-white text-3xl"></i>
+                        </div>
+                    </div>
+                    <div
+                        class="gallery-item rounded-xl overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition-shadow relative group">
+                        <img src="assets/dokumentasi-class/WhatsApp Image 2026-04-23 at 12.01.44 PMd.jpeg"
+                            alt="Class Activity"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            loading="lazy">
+                        <div
+                            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <i class="fa-solid fa-expand text-white text-3xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 text-center">
+                    <button
+                        class="see-all-btn px-6 py-3 bg-white border border-gray-200 text-gray-700 rounded-full font-medium hover:bg-gray-50 hover:text-blue-500 transition-colors shadow-sm"
+                        data-gallery="class">
+                        See All <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 2. Outclass Documentation (Horizontal scroll) -->
+            <div class="mb-20 reveal">
+                <h3 class="text-2xl font-bold mb-8 border-l-4 border-red-500 pl-4">Outclass Activities</h3>
+                <div class="w-full overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden pb-8"
+                    id="outclass-carousel-wrapper">
+                    <div class="carousel-track-reverse flex gap-4 px-4" id="outclass-carousel">
+                        <!-- Items populated by JS for infinite loop -->
+                        <div class="flex-shrink-0 w-72 h-48 rounded-xl overflow-hidden shadow-md">
+                            <img src="assets/outclass/20260420_103904.jpg" class="w-full h-full object-cover"
+                                loading="lazy">
+                        </div>
+                        <div class="flex-shrink-0 w-72 h-48 rounded-xl overflow-hidden shadow-md">
+                            <img src="assets/outclass/20260420_104712.jpg" class="w-full h-full object-cover"
+                                loading="lazy">
+                        </div>
+                        <div class="flex-shrink-0 w-72 h-48 rounded-xl overflow-hidden shadow-md">
+                            <img src="assets/outclass/20260423_101051.jpg" class="w-full h-full object-cover"
+                                loading="lazy">
+                        </div>
+                        <div class="flex-shrink-0 w-72 h-48 rounded-xl overflow-hidden shadow-md">
+                            <img src="assets/outclass/20260423_101056.jpg" class="w-full h-full object-cover"
+                                loading="lazy">
+                        </div>
+                        <div class="flex-shrink-0 w-72 h-48 rounded-xl overflow-hidden shadow-md">
+                            <img src="assets/outclass/20260423_101106.jpg" class="w-full h-full object-cover"
+                                loading="lazy">
+                        </div>
+                        <div class="flex-shrink-0 w-72 h-48 rounded-xl overflow-hidden shadow-md">
+                            <img src="assets/outclass/WhatsApp Image 2026-04-24 at 10.57.48 AM.jpeg"
+                                class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 text-center">
+                    <button
+                        class="see-all-btn px-6 py-3 bg-white border border-gray-200 text-gray-700 rounded-full font-medium hover:bg-gray-50 hover:text-red-500 transition-colors shadow-sm"
+                        data-gallery="outclass">
+                        See All <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Beach Documentation (Full width Parallax) -->
+        <div class="w-full h-[60vh] relative bg-fixed bg-center bg-cover flex items-center justify-center reveal"
+            style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');">
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div class="relative z-10 text-center text-white px-6">
+                <h3 class="font-poppins text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">Beach Trip 2026</h3>
+                <p class="text-xl md:text-2xl drop-shadow-md mb-8">at Pasir Putih Beach Pasetran Gondo Mayit (April 24,
+                    2026).</p>
+                <button
+                    class="see-all-btn px-8 py-3 bg-white/20 backdrop-blur-md border border-white/50 text-white rounded-full font-medium hover:bg-white hover:text-blue-600 transition-all shadow-lg"
+                    data-gallery="beach">
+                    See All <i class="fa-solid fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal for Documentation -->
+    <div id="lightbox"
+        class="fixed inset-0 z-[100] bg-black/90 hidden items-center justify-center opacity-0 transition-opacity duration-300 backdrop-blur-sm">
+        <button id="lightbox-close"
+            class="absolute top-6 right-6 text-white text-4xl hover:text-red-500 transition-colors z-10"><i
+                class="fa-solid fa-xmark"></i></button>
+        <img id="lightbox-img" src="" alt="Enlarged"
+            class="max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-2xl scale-95 transition-transform duration-300">
+    </div>
+
+    <!-- See All Gallery Modal -->
+    <div id="gallery-modal"
+        class="fixed inset-0 z-[90] bg-white hidden flex-col opacity-0 transition-opacity duration-300">
+        <div class="flex items-center justify-between p-6 border-b border-gray-100 shadow-sm">
+            <h2 id="gallery-modal-title" class="font-poppins text-2xl font-bold text-gray-800">Gallery</h2>
+            <button id="gallery-modal-close" class="text-gray-500 hover:text-red-500 transition-colors text-3xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="flex-1 overflow-y-auto p-6 bg-gray-50">
+            <!-- Filter Tabs -->
+            <div id="gallery-tabs" class="flex justify-center space-x-4 mb-8 hidden">
+                <button
+                    class="gallery-tab active px-6 py-2 bg-blue-500 text-white rounded-full font-medium transition-colors"
+                    data-type="image">Images</button>
+                <button
+                    class="gallery-tab px-6 py-2 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded-full font-medium transition-colors"
+                    data-type="video">Videos</button>
+            </div>
+
+            <div id="gallery-modal-grid"
+                class="container mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[200px]">
+                <!-- Images will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- MESSAGES SECTION -->
+    <section id="messages" class="py-24 bg-white relative overflow-hidden">
+        <div class="container mx-auto px-6 reveal">
+            <h2 class="font-poppins text-4xl font-bold text-center mb-16">Impressions & <span
+                    class="bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">Messages</span></h2>
+
+            <div class="max-w-4xl mx-auto h-[500px] overflow-hidden relative" id="messages-container">
+                <!-- Top & Bottom fades for smooth effect -->
+                <div
+                    class="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-white to-transparent z-10 pointer-events-none">
+                </div>
+                <div
+                    class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-white to-transparent z-10 pointer-events-none">
+                </div>
+
+                <div class="messages-track flex flex-col gap-6 py-4 px-2" id="messages-track">
+                    <!-- Message Cards -->
+                    <div
+                        class="message-card bg-gray-50 p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                        <i class="fa-solid fa-quote-left text-blue-200 text-3xl mb-4"></i>
+                        <p class="text-gray-700 italic mb-4">"The mock interviews were brutal but totally worth it. I
+                            feel so much more confident facing real HRs now!"</p>
+                        <div class="flex items-center gap-4 mb-4">
+                            <img src="assets/ourclass/Anam musholli.jpg"
+                                class="w-12 h-12 rounded-full object-cover shadow-sm">
+                            <h4 class="font-bold font-poppins text-gray-900">- Anam musholli</h4>
+                        </div>
+                    </div>
+
+                    <div
+                        class="message-card bg-gray-50 p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow ml-8 md:ml-16">
+                        <i class="fa-solid fa-quote-left text-red-200 text-3xl mb-4"></i>
+                        <p class="text-gray-700 italic mb-4">"We walked through days of pressure, then paused for a
+                            night where strangers turned to kin."
+                        </p>
+                        <div class="flex items-center gap-4 mb-4">
+                            <img src="assets/ourclass/Sarifatul Azizah.jpeg"
+                                class="w-12 h-12 rounded-full object-cover shadow-sm">
+                            <h4 class="font-bold font-poppins text-gray-900">- Sarifatul Azizah</h4>
+                        </div>
+                    </div>
+
+                    <div
+                        class="message-card bg-gray-50 p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                        <i class="fa-solid fa-quote-left text-blue-200 text-3xl mb-4"></i>
+                        <p class="text-gray-700 italic mb-4">"I'll never forget our late-night group study sessions
+                            practicing English speaking. We all improved so much together."</p>
+                        <div class="flex items-center gap-4 mb-4">
+                            <img src="assets/ourclass/Glory Naomi Parhusip.jpg"
+                                class="w-12 h-12 rounded-full object-cover shadow-sm">
+                            <h4 class="font-bold font-poppins text-gray-900">- Glory Naomi Parhusip</h4>
+                        </div>
+                    </div>
+
+                    <div
+                        class="message-card bg-gray-50 p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow ml-8 md:ml-16">
+                        <i class="fa-solid fa-quote-left text-red-200 text-3xl mb-4"></i>
+                        <p class="text-gray-700 italic mb-4">"Mr. Pepsi is the best mentor! The tips on body language
+                            and psychological preparation were game-changers for me."</p>
+                        <div class="flex items-center gap-4 mb-4">
+                            <img src="assets/ourclass/Ihsan.jpg" class="w-12 h-12 rounded-full object-cover shadow-sm">
+                            <h4 class="font-bold font-poppins text-gray-900">- Muhamad Nur Ikhsan</h4>
+                        </div>
+                    </div>
+
+                    <div
+                        class="message-card bg-gray-50 p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                        <i class="fa-solid fa-quote-left text-blue-200 text-3xl mb-4"></i>
+                        <p class="text-gray-700 italic mb-4">"From being super nervous to answering tricky interview
+                            questions with a smile. I couldn't have done it without this amazing family."</p>
+                        <div class="flex items-center gap-4 mb-4">
+                            <img src="assets/ourclass/Eva Purbaningrum.jpeg"
+                                class="w-12 h-12 rounded-full object-cover shadow-sm">
+                            <h4 class="font-bold font-poppins text-gray-900">- Eva Purbaningrum</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUOTES SECTION -->
+    <section id="quotes"
+        class="py-24 bg-gradient-to-br from-red-500 to-blue-600 text-white relative overflow-hidden reveal">
+        <!-- Abstract Shapes -->
+        <div
+            class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2">
+        </div>
+
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <i class="fa-solid fa-quote-right text-5xl md:text-7xl opacity-20 mb-8"></i>
+            <blockquote
+                class="text-2xl md:text-4xl font-poppins font-light italic leading-relaxed max-w-4xl mx-auto mb-8 drop-shadow-md">
+                "Education is not the learning of facts, but the training of the mind to think. You all have grown so
+                much, and I cannot wait to see the incredible things you will achieve."
+            </blockquote>
+            <p class="text-lg md:text-xl font-bold tracking-widest uppercase opacity-90">— Mr. Pepsi (Tutor)</p>
+        </div>
+    </section>
+
+    <!-- THANK YOU SECTIONN -->
+    <section id="thank-you" class="py-32 bg-white text-center reveal">
+        <div class="container mx-auto px-6">
+            <h2 class="font-poppins text-5xl md:text-6xl font-extrabold text-gray-900 mb-6 tracking-tight">
+                Thank <span class="bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">You!</span>
+            </h2>
+            <p class="text-gray-500 text-lg md:text-xl max-w-2xl mx-auto">
+                For the memories, the laughter, and the unforgettable moments.
+                <br>This is not a goodbye, just a see you later.
+            </p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8 border-t-4 border-blue-500">
+        <!-- <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center mb-8">
+            <div class="mb-6 md:mb-0 text-center md:text-left">
+                <h3
+                    class="font-poppins font-bold text-2xl tracking-tight bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent mb-2">
+                    JOB INTERVIEW CLASS</h3>
+                <p class="text-gray-400 text-sm">Crafted with ❤️ and a lot of caffeine.</p>
+            </div>
+
+            <div class="flex space-x-6">
+                <a href="#"
+                    class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-red-500 transition-colors duration-300">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="#"
+                    class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-500 transition-colors duration-300">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+                <a href="#"
+                    class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-400 transition-colors duration-300">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+                <a href="#"
+                    class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-red-600 transition-colors duration-300">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+            </div>
+        </div> -->
+        <div class="container mx-auto px-6 text-center border-t border-gray-800 pt-8">
+            <p class="text-gray-500 text-sm">&copy; 2026 Job Interview Class. Period April 10, 2026. All Rightss
+                Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>
