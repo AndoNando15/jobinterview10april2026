@@ -215,10 +215,11 @@ document.addEventListener('DOMContentLoaded', () => {
             { type: 'image', src: 'assets/optimized/dokumentasi-class/WhatsApp Image 2026-04-23 at 12.01.43 PM.webp' },
             { type: 'image', src: 'assets/optimized/dokumentasi-class/WhatsApp Image 2026-04-23 at 12.01.43 PMa.webp' },
             { type: 'image', src: 'assets/optimized/dokumentasi-class/WhatsApp Image 2026-04-23 at 12.01.43 PMb.webp' },
-            { type: 'video', src: 'assets/dokumentasi-class/videos/video1.mp4' },
             { type: 'image', src: 'assets/optimized/dokumentasi-class/WhatsApp Image 2026-04-23 at 12.01.44 PMc.webp' },
             { type: 'image', src: 'assets/optimized/dokumentasi-class/WhatsApp Image 2026-04-23 at 12.01.44 PMd.webp' },
-            { type: 'video', src: 'assets/dokumentasi-class/videos/video2.mp4' }
+            { type: 'material', src: 'assets/ourclass/materials/WhatsApp Image 2026-04-28 at 9.39.26 PM.jpeg' },
+            { type: 'material', src: 'assets/ourclass/materials/WhatsApp Image 2026-04-28 at 9.39.27 PM.jpeg' },
+            { type: 'material', src: 'assets/ourclass/materials/WhatsApp Image 2026-04-28 at 9.39.27 PM (1).jpeg' }
         ],
         'outclass': [
             { type: 'image', src: 'assets/optimized/outclass/20260420_103904.webp' },
@@ -240,8 +241,21 @@ document.addEventListener('DOMContentLoaded', () => {
             { type: 'image', src: 'assets/optimized/outclass/IMG_9023.webp' },
             { type: 'image', src: 'assets/optimized/outclass/IMG_9025.webp' },
             { type: 'image', src: 'assets/optimized/outclass/IMG_9026.webp' },
-            { type: 'image', src: 'assets/optimized/outclass/WhatsApp Image 2026-04-24 at 10.57.48 AM.webp' },
-            { type: 'video', src: 'assets/outclass/videos/WhatsApp Video 2026-04-24 at 11.16.16 AM.mp4' }
+            { type: 'image', src: 'assets/optimized/outclass/WhatsApp Image 2026-04-24 at 10.57.48 AM.webp' }
+        ],
+        'ourclass': [
+            { type: 'image', src: 'assets/ourclass/Anam musholli.jpeg' },
+            { type: 'image', src: 'assets/ourclass/Ahmad Sultonul Haramayn.jpg' },
+            { type: 'image', src: 'assets/ourclass/Arransyah Mahogra Istiawan.jpg' },
+            { type: 'image', src: 'assets/ourclass/Sarifatul Azizah.jpeg' },
+            { type: 'image', src: 'assets/ourclass/Glory Naomi Parhusip.jpg' },
+            { type: 'image', src: 'assets/ourclass/Sultan Nauval Hakim.jpg' },
+            { type: 'image', src: 'assets/ourclass/Herlando Prayitno.jpg' },
+            { type: 'image', src: 'assets/ourclass/Eva Purbaningrum.jpeg' },
+            { type: 'image', src: 'assets/ourclass/Ihsan.jpg' },
+            { type: 'material', src: 'assets/ourclass/materials/WhatsApp Image 2026-04-28 at 9.39.26 PM.jpeg' },
+            { type: 'material', src: 'assets/ourclass/materials/WhatsApp Image 2026-04-28 at 9.39.27 PM.jpeg' },
+            { type: 'material', src: 'assets/ourclass/materials/WhatsApp Image 2026-04-28 at 9.39.27 PM (1).jpeg' }
         ],
         'beach': [
             { type: 'image', src: 'assets/optimized/pantai/69837ab3-889d-4e30-a341-e27ba95b9433.webp' },
@@ -406,7 +420,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const div = document.createElement('div');
             div.className = 'rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow relative group h-48';
 
-            if (item.type === 'image') {
+            if (item.type === 'image' || item.type === 'material') {
                 div.classList.add('cursor-pointer');
                 div.innerHTML = `
                     <img src="${item.src}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
@@ -424,10 +438,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         lightboxImg.classList.add('scale-100');
                     }, 10);
                 });
-            } else if (item.type === 'video') {
-                div.innerHTML = `
-                    <video src="${item.src}" controls class="w-full h-full object-cover bg-black"></video>
-                `;
             }
 
             galleryModalGrid.appendChild(div);
@@ -438,12 +448,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (galleryId === 'class') galleryModalTitle.textContent = 'Class Activities';
         else if (galleryId === 'outclass') galleryModalTitle.textContent = 'Outclass Activities';
         else if (galleryId === 'beach') galleryModalTitle.textContent = 'Beach Trip Documentation';
+        else if (galleryId === 'ourclass') galleryModalTitle.textContent = 'Our Class';
 
         currentGalleryData = galleryData[galleryId] || [];
 
-        // Show tabs if there are videos
-        const hasVideos = currentGalleryData.some(item => item.type === 'video');
-        if (hasVideos) {
+        // Show tabs if there are materials
+        const hasMaterials = currentGalleryData.some(item => item.type === 'material');
+        if (hasMaterials) {
             galleryTabs.classList.remove('hidden');
         } else {
             galleryTabs.classList.add('hidden');
@@ -476,6 +487,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const type = btn.getAttribute('data-type');
             if (currentFilter === type) return;
 
+            // Require password for Materials tab
+            if (type === 'material' && !materialsUnlocked) {
+                openPasswordModal(btn);
+                return;
+            }
+
             currentFilter = type;
 
             // Update active styles
@@ -489,6 +506,97 @@ document.addEventListener('DOMContentLoaded', () => {
             renderGalleryGrid();
         });
     });
+
+    /* =========================================
+       6b. Password Modal for Materials
+    ========================================= */
+    let materialsUnlocked = false;
+    let pendingMaterialBtn = null;
+
+    const MATERIALS_PASSWORD = 'JOBINTERVIEW10APRIL2026';
+
+    const passwordModal = document.getElementById('password-modal');
+    const passwordBox = document.getElementById('password-box');
+    const passwordInput = document.getElementById('password-input');
+    const passwordError = document.getElementById('password-error');
+    const passwordSubmit = document.getElementById('password-submit');
+    const passwordCancel = document.getElementById('password-cancel');
+    const togglePassword = document.getElementById('toggle-password');
+
+    const openPasswordModal = (triggerBtn) => {
+        pendingMaterialBtn = triggerBtn;
+        passwordInput.value = '';
+        passwordError.classList.add('hidden');
+        passwordModal.classList.remove('hidden');
+        passwordModal.classList.add('flex');
+        setTimeout(() => {
+            passwordModal.classList.remove('opacity-0');
+            passwordBox.classList.remove('scale-95');
+            passwordBox.classList.add('scale-100');
+            passwordInput.focus();
+        }, 10);
+    };
+
+    const closePasswordModal = () => {
+        passwordModal.classList.add('opacity-0');
+        passwordBox.classList.remove('scale-100');
+        passwordBox.classList.add('scale-95');
+        setTimeout(() => {
+            passwordModal.classList.add('hidden');
+            passwordModal.classList.remove('flex');
+        }, 300);
+    };
+
+    const submitPassword = () => {
+        const val = passwordInput.value.trim();
+        if (val === MATERIALS_PASSWORD) {
+            materialsUnlocked = true;
+            closePasswordModal();
+
+            // Auto-click the materials tab after unlock
+            if (pendingMaterialBtn) {
+                currentFilter = 'material';
+                tabBtns.forEach(b => {
+                    b.classList.remove('bg-blue-500', 'text-white');
+                    b.classList.add('bg-gray-200', 'text-gray-700', 'hover:bg-gray-300');
+                });
+                pendingMaterialBtn.classList.add('bg-blue-500', 'text-white');
+                pendingMaterialBtn.classList.remove('bg-gray-200', 'text-gray-700', 'hover:bg-gray-300');
+                renderGalleryGrid();
+                pendingMaterialBtn = null;
+            }
+        } else {
+            passwordError.classList.remove('hidden');
+            passwordInput.value = '';
+            passwordInput.focus();
+            passwordInput.classList.add('border-red-400', 'ring-2', 'ring-red-200');
+            setTimeout(() => {
+                passwordInput.classList.remove('border-red-400', 'ring-2', 'ring-red-200');
+            }, 1500);
+        }
+    };
+
+    passwordSubmit.addEventListener('click', submitPassword);
+    passwordInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') submitPassword();
+    });
+    passwordCancel.addEventListener('click', closePasswordModal);
+    passwordModal.addEventListener('click', (e) => {
+        if (e.target === passwordModal) closePasswordModal();
+    });
+
+    // Toggle show/hide password
+    togglePassword.addEventListener('click', () => {
+        const icon = togglePassword.querySelector('i');
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            icon.classList.replace('fa-eye', 'fa-eye-slash');
+        } else {
+            passwordInput.type = 'password';
+            icon.classList.replace('fa-eye-slash', 'fa-eye');
+        }
+    });
+
 
     const closeGalleryModal = () => {
         galleryModal.classList.add('opacity-0');
