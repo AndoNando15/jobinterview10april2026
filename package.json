@@ -1,0 +1,12 @@
+{
+  "name": "image-optimizer",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "convert:webp": "node js/compress.js"
+  },
+  "dependencies": {
+    "imagemin": "^9.0.1",
+    "imagemin-webp": "^8.0.0"
+  }
+}
