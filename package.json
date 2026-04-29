@@ -6,7 +6,9 @@
     "convert:webp": "node js/compress.js"
   },
   "dependencies": {
+    "glob": "^13.0.6",
     "imagemin": "^9.0.1",
-    "imagemin-webp": "^8.0.0"
+    "imagemin-webp": "^8.0.0",
+    "sharp": "^0.34.5"
   }
 }

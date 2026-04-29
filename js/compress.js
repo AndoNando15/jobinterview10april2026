@@ -1,26 +1,34 @@
-import imagemin from 'imagemin';
-import webp from 'imagemin-webp';
+import sharp from 'sharp';
 import fs from 'fs';
 import path from 'path';
+import { globSync } from 'glob';
 
 (async () => {
-    const inputFiles = await imagemin(['assets/**/*.{jpg,jpeg,png}'], {
-        plugins: [
-            webp({ quality: 75 })
-        ]
-    });
+    // Cari semua file jpg, jpeg, png di folder assets tapi BUKAN di assets/optimized
+    const files = globSync('assets/**/*.{jpg,jpeg,png}', { ignore: 'assets/optimized/**' });
+    let count = 0;
 
-    inputFiles.forEach(file => {
-        const relativePath = file.sourcePath.replace('assets/', '');
+    for (const file of files) {
+        // Ganti path separator agar aman di Windows
+        const normalizedFile = file.replace(/\\/g, '/');
+        const relativePath = normalizedFile.replace('assets/', '');
         const newPath = path.join('assets/optimized', relativePath)
             .replace(/\.(jpg|jpeg|png)$/i, '.webp');
 
         // bikin folder kalau belum ada
         fs.mkdirSync(path.dirname(newPath), { recursive: true });
 
-        // simpan file
-        fs.writeFileSync(newPath, file.data);
-    });
+        try {
+            // Resize image (max width 1000px) and convert to WebP with 60% quality
+            await sharp(file)
+                .resize({ width: 1000, withoutEnlargement: true })
+                .webp({ quality: 60 })
+                .toFile(newPath);
+            count++;
+        } catch (err) {
+            console.error(`Gagal memproses ${file}:`, err);
+        }
+    }
 
-    console.log(`✅ ${inputFiles.length} gambar berhasil di-convert + struktur folder dipertahankan`);
+    console.log(`✅ ${count} gambar berhasil di-resize & convert ke WebP!`);
 })();
