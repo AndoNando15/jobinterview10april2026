@@ -1,19 +1,3 @@
-function toWebpHTML() {
-    document.querySelectorAll('img').forEach(img => {
-        let src = img.getAttribute('src');
-
-        if (src && src.match(/\.(jpg|jpeg|png)$/i)) {
-            let newSrc = src
-                .replace('assets/', 'assets/optimized/')
-                .replace(/\.(jpg|jpeg|png)$/i, '.webp');
-
-            img.setAttribute('src', newSrc);
-        }
-    });
-}
-
-// jalankan setelah load
-window.addEventListener('DOMContentLoaded', toWebpHTML);
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -257,9 +241,9 @@ document.addEventListener('DOMContentLoaded', () => {
             { type: 'image', src: 'assets/optimized/dokumentasi-class/WhatsApp Image 2026-04-23 at 12.01.43 PMb.webp' },
             { type: 'image', src: 'assets/optimized/dokumentasi-class/WhatsApp Image 2026-04-23 at 12.01.44 PMc.webp' },
             { type: 'image', src: 'assets/optimized/dokumentasi-class/WhatsApp Image 2026-04-23 at 12.01.44 PMd.webp' },
-            { type: 'material', src: 'assets/ourclass/materials/WhatsApp Image 2026-04-28 at 9.39.26 PM.jpeg' },
-            { type: 'material', src: 'assets/ourclass/materials/WhatsApp Image 2026-04-28 at 9.39.27 PM.jpeg' },
-            { type: 'material', src: 'assets/ourclass/materials/WhatsApp Image 2026-04-28 at 9.39.27 PM (1).jpeg' }
+            { type: 'material', src: 'assets/optimized/ourclass/materials/WhatsApp Image 2026-04-28 at 9.39.26 PM.webp' },
+            { type: 'material', src: 'assets/optimized/ourclass/materials/WhatsApp Image 2026-04-28 at 9.39.27 PM.webp' },
+            { type: 'material', src: 'assets/optimized/ourclass/materials/WhatsApp Image 2026-04-28 at 9.39.27 PM (1).webp' }
         ],
         'outclass': [
             { type: 'image', src: 'assets/optimized/outclass/20260420_103904.webp' },
@@ -284,18 +268,18 @@ document.addEventListener('DOMContentLoaded', () => {
             { type: 'image', src: 'assets/optimized/outclass/WhatsApp Image 2026-04-24 at 10.57.48 AM.webp' }
         ],
         'ourclass': [
-            { type: 'image', src: 'assets/ourclass/Anam musholli.jpeg' },
-            { type: 'image', src: 'assets/ourclass/Ahmad Sultonul Haramayn.jpg' },
-            { type: 'image', src: 'assets/ourclass/Arransyah Mahogra Istiawan.jpg' },
-            { type: 'image', src: 'assets/ourclass/Sarifatul Azizah.jpeg' },
-            { type: 'image', src: 'assets/ourclass/Glory Naomi Parhusip.jpg' },
-            { type: 'image', src: 'assets/ourclass/Sultan Nauval Hakim.jpg' },
-            { type: 'image', src: 'assets/ourclass/Herlando Prayitno.jpg' },
-            { type: 'image', src: 'assets/ourclass/Eva Purbaningrum.jpeg' },
-            { type: 'image', src: 'assets/ourclass/Ihsan.jpg' },
-            { type: 'material', src: 'assets/ourclass/materials/WhatsApp Image 2026-04-28 at 9.39.26 PM.jpeg' },
-            { type: 'material', src: 'assets/ourclass/materials/WhatsApp Image 2026-04-28 at 9.39.27 PM.jpeg' },
-            { type: 'material', src: 'assets/ourclass/materials/WhatsApp Image 2026-04-28 at 9.39.27 PM (1).jpeg' }
+            { type: 'image', src: 'assets/optimized/ourclass/Anam musholli.webp' },
+            { type: 'image', src: 'assets/optimized/ourclass/Ahmad Sultonul Haramayn.webp' },
+            { type: 'image', src: 'assets/optimized/ourclass/Arransyah Mahogra Istiawan.webp' },
+            { type: 'image', src: 'assets/optimized/ourclass/Sarifatul Azizah.webp' },
+            { type: 'image', src: 'assets/optimized/ourclass/Glory Naomi Parhusip.webp' },
+            { type: 'image', src: 'assets/optimized/ourclass/Sultan Nauval Hakim.webp' },
+            { type: 'image', src: 'assets/optimized/ourclass/Herlando Prayitno.webp' },
+            { type: 'image', src: 'assets/optimized/ourclass/Eva Purbaningrum.webp' },
+            { type: 'image', src: 'assets/optimized/ourclass/Ihsan.webp' },
+            { type: 'material', src: 'assets/optimized/ourclass/materials/WhatsApp Image 2026-04-28 at 9.39.26 PM.webp' },
+            { type: 'material', src: 'assets/optimized/ourclass/materials/WhatsApp Image 2026-04-28 at 9.39.27 PM.webp' },
+            { type: 'material', src: 'assets/optimized/ourclass/materials/WhatsApp Image 2026-04-28 at 9.39.27 PM (1).webp' }
         ],
         'beach': [
             { type: 'image', src: 'assets/optimized/pantai/69837ab3-889d-4e30-a341-e27ba95b9433.webp' },
