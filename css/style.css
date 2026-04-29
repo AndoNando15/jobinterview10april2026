@@ -120,10 +120,10 @@
 }
 
 /* ==========================================
-   Mobile Auto Center-Reveal for Our Class
+   Mobile Display for Our Class (Always Visible)
    ========================================== */
 @media (max-width: 768px) {
-    /* The overlay stays hidden by default */
+    /* Make overlay always visible on mobile */
     .member-card .member-overlay {
         position: absolute;
         inset: 0;
@@ -132,8 +132,8 @@
         flex-direction: column;
         justify-content: flex-end;
         padding: 1.25rem;
-        opacity: 0;
-        transition: opacity 0.4s ease;
+        opacity: 1 !important;
+        transition: none;
         pointer-events: none;
     }
 
@@ -143,30 +143,19 @@
         font-weight: 700;
         font-size: 1rem;
         margin: 0 0 0.2rem 0;
-        transform: translateY(12px);
-        transition: transform 0.35s ease, opacity 0.35s ease;
-        opacity: 0;
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+        transition: none;
     }
 
     .member-card .member-overlay a {
         color: #d1d5db;
         font-size: 0.78rem;
         text-decoration: none;
-        transform: translateY(12px);
-        transition: transform 0.35s ease 0.05s, opacity 0.35s ease 0.05s;
-        opacity: 0;
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+        transition: none;
         pointer-events: auto;
-    }
-
-    /* When card is at center, show overlay + slide up text */
-    .member-card.is-center .member-overlay {
-        opacity: 1;
-    }
-
-    .member-card.is-center .member-overlay h3,
-    .member-card.is-center .member-overlay a {
-        transform: translateY(0);
-        opacity: 1;
     }
 
     /* Dot indicator strip */
