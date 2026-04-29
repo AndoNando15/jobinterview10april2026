@@ -183,17 +183,57 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* =========================================
-       5b. Mobile Click for Member Cards
+       5b. Mobile Center Reveal & Dots
     ========================================= */
     const memberCards = document.querySelectorAll('.member-card');
-    memberCards.forEach(card => {
-        card.addEventListener('click', () => {
-            memberCards.forEach(c => {
-                if (c !== card) c.classList.remove('mobile-active');
+    const dotContainer = document.getElementById('carousel-dots');
+    
+    // We duplicate for infinite scroll, so original count is half
+    const originalCardsCount = memberCards.length / 2;
+    
+    if (dotContainer && window.innerWidth <= 768) {
+        // Create dots for original cards
+        for (let i = 0; i < originalCardsCount; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+            dotContainer.appendChild(dot);
+        }
+        
+        const dots = document.querySelectorAll('.carousel-dot');
+        const track = document.getElementById('class-carousel-wrapper');
+        
+        // Use IntersectionObserver to find which card is at the center
+        const observerOptions = {
+            root: track,
+            rootMargin: '0px -40% 0px -40%', // Triggers when element is near center
+            threshold: 0
+        };
+        
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Remove is-center from all
+                    memberCards.forEach(c => c.classList.remove('is-center'));
+                    // Add is-center to current
+                    entry.target.classList.add('is-center');
+                    
+                    // Update dots based on index
+                    let index = Array.from(memberCards).indexOf(entry.target);
+                    let dotIndex = index % originalCardsCount;
+                    
+                    dots.forEach((dot, i) => {
+                        if (i === dotIndex) {
+                            dot.classList.add('active');
+                        } else {
+                            dot.classList.remove('active');
+                        }
+                    });
+                }
             });
-            card.classList.toggle('mobile-active');
-        });
-    });
+        }, observerOptions);
+        
+        memberCards.forEach(card => cardObserver.observe(card));
+    }
 
     /* =========================================
        6. See All Gallery Modal
