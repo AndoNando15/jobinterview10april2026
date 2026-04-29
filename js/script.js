@@ -187,10 +187,10 @@ document.addEventListener('DOMContentLoaded', () => {
     ========================================= */
     const memberCards = document.querySelectorAll('.member-card');
     const dotContainer = document.getElementById('carousel-dots');
-    
+
     // We duplicate for infinite scroll, so original count is half
     const originalCardsCount = memberCards.length / 2;
-    
+
     if (dotContainer && window.innerWidth <= 768) {
         // Create dots for original cards
         for (let i = 0; i < originalCardsCount; i++) {
@@ -198,17 +198,17 @@ document.addEventListener('DOMContentLoaded', () => {
             dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
             dotContainer.appendChild(dot);
         }
-        
+
         const dots = document.querySelectorAll('.carousel-dot');
         const track = document.getElementById('class-carousel-wrapper');
-        
+
         // Use IntersectionObserver to find which card is at the center
         const observerOptions = {
             root: track,
             rootMargin: '0px -40% 0px -40%', // Triggers when element is near center
             threshold: 0
         };
-        
+
         const cardObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -216,11 +216,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     memberCards.forEach(c => c.classList.remove('is-center'));
                     // Add is-center to current
                     entry.target.classList.add('is-center');
-                    
+
                     // Update dots based on index
                     let index = Array.from(memberCards).indexOf(entry.target);
                     let dotIndex = index % originalCardsCount;
-                    
+
                     dots.forEach((dot, i) => {
                         if (i === dotIndex) {
                             dot.classList.add('active');
@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }, observerOptions);
-        
+
         memberCards.forEach(card => cardObserver.observe(card));
     }
 
@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { type: 'image', src: 'assets/optimized/outclass/20260423_101106.webp' },
             { type: 'image', src: 'assets/optimized/outclass/20260423_101123.webp' },
             { type: 'image', src: 'assets/optimized/outclass/20260423_101218.webp' },
-            { type: 'image', src: 'assets/optimized/outclass/E5A708BE-2F1D-438B-B012-6D08BE2FEF91.webp' },
+            // { type: 'image', src: 'assets/optimized/outclass/E5A708BE-2F1D-438B-B012-6D08BE2FEF91.webp' },
             { type: 'image', src: 'assets/optimized/outclass/IMG_6490.webp' },
             { type: 'image', src: 'assets/optimized/outclass/IMG_6534.webp' },
             { type: 'image', src: 'assets/optimized/outclass/IMG_6537.webp' },
