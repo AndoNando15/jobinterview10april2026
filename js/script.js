@@ -594,7 +594,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let materialsUnlocked = false;
     let pendingMaterialBtn = null;
 
-    const MATERIALS_PASSWORD = 'JOBINTERVIEW10APRIL2026';
+    const MATERIALS_PASSWORD = 'JIP100426';
 
     const passwordModal = document.getElementById('password-modal');
     const passwordBox = document.getElementById('password-box');
