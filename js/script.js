@@ -791,4 +791,44 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('scroll', playMusic);
         document.addEventListener('touchstart', playMusic);
     }
+
+    /* =========================================
+       9. Dark Mode Toggle Logic
+    ========================================= */
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
+    const htmlElement = document.documentElement;
+
+    // Function to set theme
+    const setTheme = (isDark) => {
+        if (isDark) {
+            htmlElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            htmlElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+        }
+    };
+
+    // Initialize theme based on preference (Default to LIGHT)
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme === 'dark') {
+        setTheme(true);
+    } else {
+        setTheme(false);
+    }
+
+    // Toggle events
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            setTheme(!htmlElement.classList.contains('dark'));
+        });
+    }
+
+    if (themeToggleMobileBtn) {
+        themeToggleMobileBtn.addEventListener('click', () => {
+            setTheme(!htmlElement.classList.contains('dark'));
+        });
+    }
 });

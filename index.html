@@ -17,6 +17,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
@@ -44,22 +45,28 @@
 </head>
 
 <body
-    class="font-sans bg-gray-50 text-gray-900 antialiased overflow-x-hidden selection:bg-blue-500 selection:text-white">
+    class="font-sans bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 antialiased overflow-x-hidden selection:bg-blue-500 selection:text-white transition-colors duration-500">
 
     <!-- HEADER / NAVBAR -->
     <header id="header"
-        class="fixed w-full top-0 z-50 transition-all duration-300 py-4 bg-white/80 backdrop-blur-md shadow-sm">
+        class="fixed w-full top-0 z-50 transition-all duration-300 py-4 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm">
         <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
             <!-- Logo / Class Name -->
             <a href="#" class="flex items-center gap-3 group">
-                <img src="assets/logo/logo.png" alt="Logo" class="h-10 md:h-12 w-auto transition-transform duration-300 group-hover:scale-110">
-                <span class="font-poppins font-bold text-xl md:text-2xl tracking-tight bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">
+                <!-- Light Mode Logo -->
+                <img src="assets/logo/logo.png" alt="Logo"
+                    class="h-10 md:h-12 w-auto transition-transform duration-300 group-hover:scale-110 dark:hidden">
+                <!-- Dark Mode Logo -->
+                <img src="assets/logo/logo-putih.png" alt="Logo"
+                    class="h-10 md:h-12 w-auto transition-transform duration-300 group-hover:scale-110 hidden dark:block">
+                <span
+                    class="font-poppins font-bold text-xl md:text-2xl tracking-tight bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">
                     JOB INTERVIEW CLASS
                 </span>
             </a>
 
             <!-- Desktop Nav -->
-            <nav class="hidden md:flex space-x-8">
+            <nav class="hidden md:flex items-center space-x-8">
                 <a href="#our-class" class="text-sm font-medium hover:text-blue-500 transition-colors nav-link">Our
                     Class</a>
                 <a href="#documentation"
@@ -67,21 +74,36 @@
                 <a href="#messages"
                     class="text-sm font-medium hover:text-blue-500 transition-colors nav-link">Messages</a>
                 <a href="#quotes" class="text-sm font-medium hover:text-blue-500 transition-colors nav-link">Quotes</a>
+
+                <!-- Theme Toggle Desktop -->
+                <button id="theme-toggle"
+                    class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors focus:outline-none">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
+                    <i class="fa-solid fa-sun hidden dark:block"></i>
+                </button>
             </nav>
 
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-gray-700 hover:text-blue-500 focus:outline-none">
-                <i class="fa-solid fa-bars text-2xl"></i>
-            </button>
+            <!-- Mobile Actions -->
+            <div class="flex items-center gap-4 md:hidden">
+                <!-- Theme Toggle Mobile -->
+                <button id="theme-toggle-mobile"
+                    class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors focus:outline-none">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
+                    <i class="fa-solid fa-sun hidden dark:block"></i>
+                </button>
+                <button id="mobile-menu-btn" class="text-gray-700 dark:text-gray-300 hover:text-blue-500 focus:outline-none">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
         </div>
 
         <!-- Mobile Nav (Hidden by default) -->
         <div id="mobile-menu"
-            class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg border-t border-gray-100 flex flex-col space-y-4 py-6 px-6">
-            <a href="#our-class" class="mobile-link text-base font-medium">Our Class</a>
-            <a href="#documentation" class="mobile-link text-base font-medium">Documentation</a>
-            <a href="#messages" class="mobile-link text-base font-medium">Messages</a>
-            <a href="#quotes" class="mobile-link text-base font-medium">Quotes</a>
+            class="hidden md:hidden absolute top-full left-0 w-full bg-white dark:bg-gray-900 shadow-lg border-t border-gray-100 dark:border-gray-800 flex flex-col space-y-4 py-6 px-6">
+            <a href="#our-class" class="mobile-link text-base font-medium dark:text-gray-200">Our Class</a>
+            <a href="#documentation" class="mobile-link text-base font-medium dark:text-gray-200">Documentation</a>
+            <a href="#messages" class="mobile-link text-base font-medium dark:text-gray-200">Messages</a>
+            <a href="#quotes" class="mobile-link text-base font-medium dark:text-gray-200">Quotes</a>
         </div>
     </header>
 
@@ -102,31 +124,31 @@
         </div>
 
         <div class="container mx-auto px-6 text-center reveal">
-            <h1 class="font-poppins text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-gray-900">
+            <h1 class="font-poppins text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-gray-900 dark:text-white">
                 Welcome to <br />
                 <span class="bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">JOB INTERVIEW
                     CLASS</span>
             </h1>
-            <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-10">
+            <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10">
                 A collection of our memories, struggles, and unforgettable moments together. We are more than just a
                 class, we are a family.<br>
                 <span
-                    class="inline-block mt-3 px-4 py-1 bg-blue-100 text-blue-600 rounded-full font-medium text-sm">Period:
+                    class="inline-block mt-3 px-4 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full font-medium text-sm">Period:
                     April 10, 2026</span>
             </p>
             <a href="#our-class"
-                class="inline-block px-8 py-4 bg-gray-900 text-white rounded-full font-medium hover:bg-gradient-to-r hover:from-red-500 hover:to-blue-500 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                class="inline-block px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full font-medium hover:bg-gradient-to-r hover:from-red-500 hover:to-blue-500 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                 Explore Memories
             </a>
         </div>
     </section>
 
     <!-- OUR CLASS SECTION -->
-    <section id="our-class" class="py-24 bg-white relative">
+    <section id="our-class" class="py-24 bg-white dark:bg-gray-900 relative">
         <div class="container mx-auto px-6 mb-12 reveal">
-            <h2 class="font-poppins text-4xl font-bold text-center mb-4">Our <span class="text-blue-500">Class</span>
+            <h2 class="font-poppins text-4xl font-bold text-center mb-4 dark:text-white">Our <span class="text-blue-500">Class</span>
             </h2>
-            <p class="text-center text-gray-500 max-w-xl mx-auto">Meet the amazing individuals who make up our
+            <p class="text-center text-gray-500 dark:text-gray-400 max-w-xl mx-auto">Meet the amazing individuals who make up our
                 incredible family.</p>
         </div>
 
@@ -278,7 +300,7 @@
         <div id="carousel-dots" class="md:hidden flex justify-center items-center gap-2 mt-4 px-4 flex-wrap mb-4"></div>
         <div class="text-center">
             <button
-                class="see-all-btn px-6 py-3 bg-white border border-gray-200 text-gray-700 rounded-full font-medium hover:bg-gray-50 hover:text-blue-500 transition-colors shadow-sm"
+                class="see-all-btn px-6 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-full font-medium hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-blue-500 transition-colors shadow-sm"
                 data-gallery="ourclass">
                 See All <i class="fa-solid fa-arrow-right ml-2"></i>
             </button>
@@ -286,14 +308,14 @@
     </section>
 
     <!-- DOCUMENTATION SECTION -->
-    <section id="documentation" class=" bg-gray-50">
+    <section id="documentation" class=" bg-gray-50 dark:bg-gray-900">
         <div class="container mx-auto px-6 reveal">
-            <h2 class="font-poppins text-4xl font-bold text-center mb-16">Our <span
+            <h2 class="font-poppins text-4xl font-bold text-center mb-16 dark:text-white">Our <span
                     class="text-red-500">Documentation</span></h2>
 
             <!-- 1. Class Documentation (Grid) -->
             <div class="mb-20">
-                <h3 class="text-2xl font-bold mb-8 border-l-4 border-blue-500 pl-4">Class Activities</h3>
+                <h3 class="text-2xl font-bold mb-8 border-l-4 border-blue-500 pl-4 dark:text-white">Class Activities</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[200px]"
                     id="class-gallery">
                     <div
@@ -354,7 +376,7 @@
                 </div>
                 <div class="mt-8 text-center">
                     <button
-                        class="see-all-btn px-6 py-3 bg-white border border-gray-200 text-gray-700 rounded-full font-medium hover:bg-gray-50 hover:text-blue-500 transition-colors shadow-sm"
+                        class="see-all-btn px-6 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-full font-medium hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-blue-500 transition-colors shadow-sm"
                         data-gallery="class">
                         See All <i class="fa-solid fa-arrow-right ml-2"></i>
                     </button>
@@ -363,7 +385,7 @@
 
             <!-- 2. Outclass Documentation (Horizontal scroll) -->
             <div class="mb-20 reveal">
-                <h3 class="text-2xl font-bold mb-8 border-l-4 border-red-500 pl-4">Outclass Activities</h3>
+                <h3 class="text-2xl font-bold mb-8 border-l-4 border-red-500 pl-4 dark:text-white">Outclass Activities</h3>
                 <div class="w-full overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden pb-8"
                     id="outclass-carousel-wrapper">
                     <div class="carousel-track-reverse flex gap-4 px-4" id="outclass-carousel">
@@ -494,7 +516,7 @@
                 </div>
                 <div class="mt-4 text-center">
                     <button
-                        class="see-all-btn px-6 py-3 bg-white border border-gray-200 text-gray-700 rounded-full font-medium hover:bg-gray-50 hover:text-red-500 transition-colors shadow-sm"
+                        class="see-all-btn px-6 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-full font-medium hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-red-500 transition-colors shadow-sm"
                         data-gallery="outclass">
                         See All <i class="fa-solid fa-arrow-right ml-2"></i>
                     </button>
@@ -531,21 +553,21 @@
 
     <!-- See All Gallery Modal -->
     <div id="gallery-modal"
-        class="fixed inset-0 z-[90] bg-white hidden flex-col opacity-0 transition-opacity duration-300">
-        <div class="flex items-center justify-between p-6 border-b border-gray-100 shadow-sm">
-            <h2 id="gallery-modal-title" class="font-poppins text-2xl font-bold text-gray-800">Gallery</h2>
+        class="fixed inset-0 z-[90] bg-white dark:bg-gray-900 hidden flex-col opacity-0 transition-opacity duration-300">
+        <div class="flex items-center justify-between p-6 border-b border-gray-100 dark:border-gray-800 shadow-sm">
+            <h2 id="gallery-modal-title" class="font-poppins text-2xl font-bold text-gray-800 dark:text-white">Gallery</h2>
             <button id="gallery-modal-close" class="text-gray-500 hover:text-red-500 transition-colors text-3xl">
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
-        <div class="flex-1 overflow-y-auto p-6 bg-gray-50">
+        <div class="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-gray-900/50">
             <!-- Filter Tabs -->
             <div id="gallery-tabs" class="flex justify-center space-x-4 mb-8 hidden">
                 <button
                     class="gallery-tab active px-6 py-2 bg-blue-500 text-white rounded-full font-medium transition-colors"
                     data-type="image">Images</button>
                 <button
-                    class="gallery-tab px-6 py-2 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded-full font-medium transition-colors"
+                    class="gallery-tab px-6 py-2 bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-700 rounded-full font-medium transition-colors"
                     data-type="material">Materials</button>
             </div>
 
@@ -559,19 +581,19 @@
     <!-- Password Modal for Materials -->
     <div id="password-modal"
         class="fixed inset-0 z-[110] bg-black/60 backdrop-blur-sm hidden items-center justify-center opacity-0 transition-opacity duration-300">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm mx-6 p-8 transform scale-95 transition-transform duration-300"
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl w-full max-w-sm mx-6 p-8 transform scale-95 transition-transform duration-300"
             id="password-box">
             <div class="text-center mb-6">
                 <div
                     class="w-16 h-16 bg-gradient-to-br from-red-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
                     <i class="fa-solid fa-lock text-white text-2xl"></i>
                 </div>
-                <h3 class="font-poppins text-xl font-bold text-gray-900">Materials Access</h3>
-                <p class="text-gray-500 text-sm mt-1">Enter password to view class materials</p>
+                <h3 class="font-poppins text-xl font-bold text-gray-900 dark:text-white">Materials Access</h3>
+                <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Enter password to view class materials</p>
             </div>
             <div class="relative mb-4">
                 <input type="password" id="password-input"
-                    class="w-full border border-gray-200 rounded-xl px-4 py-3 pr-12 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all"
+                    class="w-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 rounded-xl px-4 py-3 pr-12 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all"
                     placeholder="Enter password..." autocomplete="off">
                 <button id="toggle-password"
                     class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
@@ -583,7 +605,7 @@
             </p>
             <div class="flex gap-3">
                 <button id="password-cancel"
-                    class="flex-1 px-4 py-3 bg-gray-100 text-gray-600 rounded-xl font-medium hover:bg-gray-200 transition-colors">
+                    class="flex-1 px-4 py-3 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-xl font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
                     Cancel
                 </button>
                 <button id="password-submit"
@@ -595,95 +617,95 @@
     </div>
 
     <!-- MESSAGES SECTION -->
-    <section id="messages" class="py-24 bg-white relative overflow-hidden">
+    <section id="messages" class="py-24 bg-white dark:bg-gray-900 relative overflow-hidden">
         <div class="container mx-auto px-6 reveal">
-            <h2 class="font-poppins text-4xl font-bold text-center mb-16">Impressions & <span
+            <h2 class="font-poppins text-4xl font-bold text-center mb-16 dark:text-white">Impressions & <span
                     class="bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">Messages</span></h2>
 
             <div class="max-w-4xl mx-auto h-[500px] overflow-hidden relative" id="messages-container">
                 <!-- Top & Bottom fades for smooth effect -->
                 <div
-                    class="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-white to-transparent z-10 pointer-events-none">
+                    class="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-white dark:from-gray-900 to-transparent z-10 pointer-events-none">
                 </div>
                 <div
-                    class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-white to-transparent z-10 pointer-events-none">
+                    class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-white dark:from-gray-900 to-transparent z-10 pointer-events-none">
                 </div>
 
                 <div class="messages-track flex flex-col gap-6 py-4 px-2" id="messages-track">
                     <!-- 1. Anam musholli -->
                     <div
-                        class="message-card bg-gray-50 p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                        <i class="fa-solid fa-quote-left text-blue-200 text-3xl mb-4"></i>
-                        <p class="text-gray-700 italic mb-4">"I’ll never forget how you turned my interview fear into
+                        class="message-card bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
+                        <i class="fa-solid fa-quote-left text-blue-200 dark:text-blue-900/30 text-3xl mb-4"></i>
+                        <p class="text-gray-700 dark:text-gray-300 italic mb-4">"I’ll never forget how you turned my interview fear into
                             confidence. Thank you, Mr. Pepsi, for the real talk, the body language drills, and for
                             believing in us even when we doubted ourselves."</p>
                         <div class="flex items-center gap-4">
                             <img loading="lazy" src="assets/optimized/ourclass/Anam musholli.webp"
                                 class="w-12 h-12 rounded-full object-cover shadow-sm">
-                            <h4 class="font-bold font-poppins text-gray-900">- Anam musholli</h4>
+                            <h4 class="font-bold font-poppins text-gray-900 dark:text-white">- Anam musholli</h4>
                         </div>
                     </div>
 
                     <!-- 2. Ahmad Sultonul Haramayn -->
                     <div
-                        class="message-card bg-gray-50 p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow ml-8 md:ml-16">
-                        <i class="fa-solid fa-quote-left text-red-200 text-3xl mb-4"></i>
-                        <p class="text-gray-700 italic mb-4">"Learning how to present myself professionally was the best
+                        class="message-card bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
+                        <i class="fa-solid fa-quote-left text-blue-200 dark:text-blue-900/30 text-3xl mb-4"></i>
+                        <p class="text-gray-700 dark:text-gray-300 italic mb-4">"Learning how to present myself professionally was the best
                             part. This class changed my perspective on career building."</p>
                         <div class="flex items-center gap-4">
                             <img loading="lazy" src="assets/optimized/ourclass/Ahmad Sultonul Haramayn.webp"
                                 class="w-12 h-12 rounded-full object-cover shadow-sm">
-                            <h4 class="font-bold font-poppins text-gray-900">- Ahmad Sultonul Haramayn</h4>
+                            <h4 class="font-bold font-poppins text-gray-900 dark:text-white">- Ahmad Sultonul Haramayn</h4>
                         </div>
                     </div>
 
                     <!-- 3. Arransyah Mahogra Istiawan -->
                     <div
-                        class="message-card bg-gray-50 p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                        <i class="fa-solid fa-quote-left text-blue-200 text-3xl mb-4"></i>
-                        <p class="text-gray-700 italic mb-4">"Mr. Pepsi’s job interview class at Kampung Inggris is
+                        class="message-card bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
+                        <i class="fa-solid fa-quote-left text-blue-200 dark:text-blue-900/30 text-3xl mb-4"></i>
+                        <p class="text-gray-700 dark:text-gray-300 italic mb-4">"Mr. Pepsi’s job interview class at Kampung Inggris is
                             truly inspiring, practical, clear, and confidence boosting. Wishing continued success in
                             helping more people achieve their dream careers!."</p>
                         <div class="flex items-center gap-4">
                             <img loading="lazy" src="assets/optimized/ourclass/Arransyah Mahogra Istiawan.webp"
                                 class="w-12 h-12 rounded-full object-cover shadow-sm">
-                            <h4 class="font-bold font-poppins text-gray-900">- Arransyah Mahogra Istiawan</h4>
+                            <h4 class="font-bold font-poppins text-gray-900 dark:text-white">- Arransyah Mahogra Istiawan</h4>
                         </div>
                     </div>
 
                     <!-- 4. Sarifatul Azizah -->
                     <div
-                        class="message-card bg-gray-50 p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow ml-8 md:ml-16">
-                        <i class="fa-solid fa-quote-left text-red-200 text-3xl mb-4"></i>
-                        <p class="text-gray-700 italic mb-4">"We walked through days of pressure, then paused for a
+                        class="message-card bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow ml-8 md:ml-16">
+                        <i class="fa-solid fa-quote-left text-red-200 dark:text-red-900/30 text-3xl mb-4"></i>
+                        <p class="text-gray-700 dark:text-gray-300 italic mb-4">"We walked through days of pressure, then paused for a
                             night where strangers turned to kin."</p>
                         <div class="flex items-center gap-4">
                             <img loading="lazy" src="assets/optimized/ourclass/Sarifatul Azizah.webp"
                                 class="w-12 h-12 rounded-full object-cover shadow-sm">
-                            <h4 class="font-bold font-poppins text-gray-900">- Sarifatul Azizah</h4>
+                            <h4 class="font-bold font-poppins text-gray-900 dark:text-white">- Sarifatul Azizah</h4>
                         </div>
                     </div>
 
                     <!-- 5. Glory Naomi Parhusip -->
                     <div
-                        class="message-card bg-gray-50 p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                        <i class="fa-solid fa-quote-left text-blue-200 text-3xl mb-4"></i>
-                        <p class="text-gray-700 italic mb-4">"This interview class was more than just learning how to
+                        class="message-card bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
+                        <i class="fa-solid fa-quote-left text-blue-200 dark:text-blue-900/30 text-3xl mb-4"></i>
+                        <p class="text-gray-700 dark:text-gray-300 italic mb-4">"This interview class was more than just learning how to
                             answer questions. It was full of life lessons, real stories, and meaningful experiences. I
                             learned not only how to speak, but also how to understand myself better. It was truly
                             enjoyable and valuable."</p>
                         <div class="flex items-center gap-4">
                             <img loading="lazy" src="assets/optimized/ourclass/Glory Naomi Parhusip.webp"
                                 class="w-12 h-12 rounded-full object-cover shadow-sm">
-                            <h4 class="font-bold font-poppins text-gray-900">- Glory Naomi Parhusip</h4>
+                            <h4 class="font-bold font-poppins text-gray-900 dark:text-white">- Glory Naomi Parhusip</h4>
                         </div>
                     </div>
 
                     <!-- 6. Sultan Nauval Hakim -->
                     <div
-                        class="message-card bg-gray-50 p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow ml-8 md:ml-16">
-                        <i class="fa-solid fa-quote-left text-red-200 text-3xl mb-4"></i>
-                        <p class="text-gray-700 italic mb-4">"We never truly know the path we walk , nor all the stories
+                        class="message-card bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow ml-8 md:ml-16">
+                        <i class="fa-solid fa-quote-left text-red-200 dark:text-red-900/30 text-3xl mb-4"></i>
+                        <p class="text-gray-700 dark:text-gray-300 italic mb-4">"We never truly know the path we walk , nor all the stories
                             God has written for us. But I believe in every journey, God hides the most beautiful
                             surprises—
                             arriving quietly without a single warning. And somewhere along my way , He gave me one of
@@ -693,47 +715,47 @@
                         <div class="flex items-center gap-4">
                             <img loading="lazy" src="assets/optimized/ourclass/Sultan Nauval Hakim.webp"
                                 class="w-12 h-12 rounded-full object-cover shadow-sm">
-                            <h4 class="font-bold font-poppins text-gray-900">- Sultan Nauval Hakim</h4>
+                            <h4 class="font-bold font-poppins text-gray-900 dark:text-white">- Sultan Nauval Hakim</h4>
                         </div>
                     </div>
 
                     <!-- 7. Herlando Prayitno -->
                     <div
-                        class="message-card bg-gray-50 p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                        <i class="fa-solid fa-quote-left text-blue-200 text-3xl mb-4"></i>
-                        <p class="text-gray-700 italic mb-4">"This class was a great experience for me. I learned a lot
+                        class="message-card bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
+                        <i class="fa-solid fa-quote-left text-blue-200 dark:text-blue-900/30 text-3xl mb-4"></i>
+                        <p class="text-gray-700 dark:text-gray-300 italic mb-4">"This class was a great experience for me. I learned a lot
                             about interviews, and I also met amazing friends who made the learning process more
                             enjoyable."</p>
                         <div class="flex items-center gap-4">
                             <img loading="lazy" src="assets/optimized/ourclass/Herlando Prayitno.webp"
                                 class="w-12 h-12 rounded-full object-cover shadow-sm">
-                            <h4 class="font-bold font-poppins text-gray-900">- Herlando Prayitno</h4>
+                            <h4 class="font-bold font-poppins text-gray-900 dark:text-white">- Herlando Prayitno</h4>
                         </div>
                     </div>
 
                     <!-- 8. Eva Purbaningrum -->
                     <div
-                        class="message-card bg-gray-50 p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow ml-8 md:ml-16">
-                        <i class="fa-solid fa-quote-left text-red-200 text-3xl mb-4"></i>
-                        <p class="text-gray-700 italic mb-4">"From being super nervous to answering tricky interview
+                        class="message-card bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow ml-8 md:ml-16">
+                        <i class="fa-solid fa-quote-left text-red-200 dark:text-red-900/30 text-3xl mb-4"></i>
+                        <p class="text-gray-700 dark:text-gray-300 italic mb-4">"From being super nervous to answering tricky interview
                             questions with a smile. I couldn't have done it without this amazing family."</p>
                         <div class="flex items-center gap-4">
                             <img loading="lazy" src="assets/optimized/ourclass/Eva Purbaningrum.webp"
                                 class="w-12 h-12 rounded-full object-cover shadow-sm">
-                            <h4 class="font-bold font-poppins text-gray-900">- Eva Purbaningrum</h4>
+                            <h4 class="font-bold font-poppins text-gray-900 dark:text-white">- Eva Purbaningrum</h4>
                         </div>
                     </div>
 
                     <!-- 9. Muhamad Nur Ikhsan -->
                     <div
-                        class="message-card bg-gray-50 p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                        <i class="fa-solid fa-quote-left text-blue-200 text-3xl mb-4"></i>
-                        <p class="text-gray-700 italic mb-4">"Mr. Pepsi is the best mentor! The tips on body language
+                        class="message-card bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
+                        <i class="fa-solid fa-quote-left text-blue-200 dark:text-blue-900/30 text-3xl mb-4"></i>
+                        <p class="text-gray-700 dark:text-gray-300 italic mb-4">"Mr. Pepsi is the best mentor! The tips on body language
                             and psychological preparation were game-changers for me."</p>
                         <div class="flex items-center gap-4">
                             <img loading="lazy" src="assets/optimized/ourclass/Ihsan.webp"
                                 class="w-12 h-12 rounded-full object-cover shadow-sm">
-                            <h4 class="font-bold font-poppins text-gray-900">- Muhamad Nur Ikhsan</h4>
+                            <h4 class="font-bold font-poppins text-gray-900 dark:text-white">- Muhamad Nur Ikhsan</h4>
                         </div>
                     </div>
                 </div>
@@ -765,12 +787,12 @@
     </section>
 
     <!-- THANK YOU SECTIONN -->
-    <section id="thank-you" class="py-32 bg-white text-center reveal">
+    <section id="thank-you" class="py-32 bg-white dark:bg-gray-900 text-center reveal">
         <div class="container mx-auto px-6">
-            <h2 class="font-poppins text-5xl md:text-6xl font-extrabold text-gray-900 mb-6 tracking-tight">
+            <h2 class="font-poppins text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-white mb-6 tracking-tight">
                 Thank <span class="bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">You!</span>
             </h2>
-            <p class="text-gray-500 text-lg md:text-xl max-w-2xl mx-auto">
+            <p class="text-gray-500 dark:text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
                 For the memories, the laughter, and the unforgettable moments.
                 <br>This is not a goodbye, just a see you later.
             </p>
@@ -807,7 +829,7 @@
             </div>
         </div> -->
         <div class="container mx-auto px-6 text-center border-t border-gray-800 pt-8">
-            <p class="text-gray-500 text-sm mb-2">
+            <p class="text-gray-500 dark:text-gray-400 text-sm mb-2">
                 &copy; 2026 Job Interview Class. Period April 10, 2026. All Rights Reserved.
                 <br>
                 Created by <a href="https://www.instagram.com/andonando_15/" target="_blank" rel="noopener noreferrer"
