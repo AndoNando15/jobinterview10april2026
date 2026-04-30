@@ -19,10 +19,10 @@ import { globSync } from 'glob';
         fs.mkdirSync(path.dirname(newPath), { recursive: true });
 
         try {
-            // Resize image (max width 1000px) and convert to WebP with 60% quality
+            // Resize image (max width 800px) and convert to WebP with 50% quality for maximum performance
             await sharp(file)
-                .resize({ width: 1000, withoutEnlargement: true })
-                .webp({ quality: 60 })
+                .resize({ width: 800, withoutEnlargement: true })
+                .webp({ quality: 50, effort: 6 })
                 .toFile(newPath);
             count++;
         } catch (err) {
