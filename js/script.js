@@ -274,7 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { type: 'image', src: 'assets/optimized/dokumentasi-class/WhatsApp Image 2026-04-30 at 5.1AM.webp' },
             { type: 'image', src: 'assets/optimized/dokumentasi-class/WhatsApp Image 2026-04-30 at 5.2 AM.webp' },
             { type: 'image', src: 'assets/optimized/dokumentasi-class/WhatsApp Image 2026-04-30 at 5.3 AM.webp' },
-            { type: 'image', src: 'assets/optimized/dokumentasi-class/WhatsApp Image 2026-04-30 at 5.4 AM.webp' },
+            // { type: 'image', src: 'assets/optimized/dokumentasi-class/WhatsApp Image 2026-04-30 at 5.4 AM.webp' },
             { type: 'image', src: 'assets/optimized/dokumentasi-class/WhatsApp Image 2026-04-30 at 5.6.17 AM.webp' },
             { type: 'image', src: 'assets/optimized/dokumentasi-class/WhatsApp Image 2026-04-30 at 5.8.43 AM.webp' },
             { type: 'image', src: 'assets/optimized/dokumentasi-class/WhatsApp Image 2026-04-30 at 5.813 AM.webp' },
