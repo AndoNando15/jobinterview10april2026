@@ -767,4 +767,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setupAutoScroll('class-carousel-wrapper', 'class-carousel', 1, false);
     setupAutoScroll('outclass-carousel-wrapper', 'outclass-carousel', 1, true);
+
+    /* =========================================
+       8. Background Music Logic
+    ========================================= */
+    const bgMusic = document.getElementById('bg-music');
+    
+    if (bgMusic) {
+        // Attempt to play on load (may be blocked)
+        const playMusic = () => {
+            bgMusic.play().then(() => {
+                // Success, remove listeners
+                document.removeEventListener('click', playMusic);
+                document.removeEventListener('scroll', playMusic);
+                document.removeEventListener('touchstart', playMusic);
+            }).catch(error => {
+                console.log('Autoplay blocked. Waiting for interaction...');
+            });
+        };
+
+        // Add listeners for first interaction to start music
+        document.addEventListener('click', playMusic);
+        document.addEventListener('scroll', playMusic);
+        document.addEventListener('touchstart', playMusic);
+    }
 });
