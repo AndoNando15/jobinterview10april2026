@@ -196,11 +196,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const cardObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Remove is-center from all
-                    memberCards.forEach(c => c.classList.remove('is-center'));
-                    // Add is-center to current
-                    entry.target.classList.add('is-center');
-
                     // Update dots based on index
                     let index = Array.from(memberCards).indexOf(entry.target);
                     let dotIndex = index % originalCardsCount;
@@ -218,6 +213,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
         memberCards.forEach(card => cardObserver.observe(card));
     }
+
+    // Add click listener for manual reveal on mobile (outside dotContainer condition)
+    document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+            const card = e.target.closest('.member-card');
+            
+            // If clicking outside any card, remove active state from all
+            if (!card) {
+                document.querySelectorAll('.member-card.mobile-active').forEach(c => {
+                    c.classList.remove('mobile-active');
+                });
+                return;
+            }
+
+            // Don't toggle if clicking the Instagram link
+            if (e.target.closest('a')) return;
+            
+            // Remove active state from all OTHER cards
+            document.querySelectorAll('.member-card.mobile-active').forEach(c => {
+                if (c !== card) {
+                    c.classList.remove('mobile-active');
+                }
+            });
+
+            // Toggle the clicked card
+            card.classList.toggle('mobile-active');
+        }
+    });
 
     /* =========================================
        6. See All Gallery Modal

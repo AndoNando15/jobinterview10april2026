@@ -120,10 +120,10 @@
 }
 
 /* ==========================================
-   Mobile Display for Our Class (Always Visible)
+   Mobile Auto Center-Reveal for Our Class
    ========================================== */
 @media (max-width: 768px) {
-    /* Make overlay always visible on mobile */
+    /* Make overlay hidden by default on mobile */
     .member-card .member-overlay {
         position: absolute;
         inset: 0;
@@ -132,8 +132,8 @@
         flex-direction: column;
         justify-content: flex-end;
         padding: 1.25rem;
-        opacity: 1 !important;
-        transition: none;
+        opacity: 0 !important;
+        transition: opacity 0.4s ease;
         pointer-events: none;
     }
 
@@ -143,18 +143,33 @@
         font-weight: 700;
         font-size: 1rem;
         margin: 0 0 0.2rem 0;
-        transform: translateY(0) !important;
-        opacity: 1 !important;
-        transition: none;
+        transform: translateY(12px) !important;
+        opacity: 0 !important;
+        transition: transform 0.35s ease, opacity 0.35s ease;
     }
 
     .member-card .member-overlay a {
         color: #d1d5db;
         font-size: 0.78rem;
         text-decoration: none;
+        transform: translateY(12px) !important;
+        opacity: 0 !important;
+        transition: transform 0.35s ease 0.05s, opacity 0.35s ease 0.05s;
+        pointer-events: none;
+    }
+
+    /* When card is clicked (mobile-active), show overlay + slide up text */
+    .member-card.mobile-active .member-overlay {
+        opacity: 1 !important;
+    }
+
+    .member-card.mobile-active .member-overlay h3,
+    .member-card.mobile-active .member-overlay a {
         transform: translateY(0) !important;
         opacity: 1 !important;
-        transition: none;
+    }
+    
+    .member-card.mobile-active .member-overlay a {
         pointer-events: auto;
     }
 
