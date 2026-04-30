@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', (e) => {
         if (window.innerWidth <= 768) {
             const card = e.target.closest('.member-card');
-            
+
             // If clicking outside any card, remove active state from all
             if (!card) {
                 document.querySelectorAll('.member-card.mobile-active').forEach(c => {
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Don't toggle if clicking the Instagram link
             if (e.target.closest('a')) return;
-            
+
             // Remove active state from all OTHER cards
             document.querySelectorAll('.member-card.mobile-active').forEach(c => {
                 if (c !== card) {
@@ -293,6 +293,17 @@ document.addEventListener('DOMContentLoaded', () => {
             { type: 'material', src: 'assets/optimized/ourclass/materials/WhatsApp Image 2026-04-28 at 9.39.27 PM (1).webp' }
         ],
         'outclass': [
+            { type: 'image', src: 'assets/optimized/outclass/WhatsApp Image 2026-04-30 at 7.07.46 AM (1).webp' },
+            { type: 'image', src: 'assets/optimized/outclass/WhatsApp Image 2026-04-30 at 7.07.46 AM.webp' },
+            { type: 'image', src: 'assets/optimized/outclass/WhatsApp Image 2026-04-30 at 7.07.47 AM (1).webp' },
+            { type: 'image', src: 'assets/optimized/outclass/WhatsApp Image 2026-04-30 at 7.07.47 AM (2).webp' },
+            { type: 'image', src: 'assets/optimized/outclass/WhatsApp Image 2026-04-30 at 7.07.47 AM.webp' },
+            { type: 'image', src: 'assets/optimized/outclass/WhatsApp Image 2026-04-30 at 7.07.48 AM (1).webp' },
+            { type: 'image', src: 'assets/optimized/outclass/WhatsApp Image 2026-04-30 at 7.07.48 AM (2).webp' },
+            { type: 'image', src: 'assets/optimized/outclass/WhatsApp Image 2026-04-30 at 7.07.48 AM.webp' },
+            { type: 'image', src: 'assets/optimized/outclass/WhatsApp Image 2026-04-30 at 7.10.20 AM (1).webp' },
+            { type: 'image', src: 'assets/optimized/outclass/WhatsApp Image 2026-04-30 at 7.10.20 AM (2).webp' },
+            { type: 'image', src: 'assets/optimized/outclass/WhatsApp Image 2026-04-30 at 7.10.20 AM.webp' },
             { type: 'image', src: 'assets/optimized/outclass/20260420_103904.webp' },
             { type: 'image', src: 'assets/optimized/outclass/20260420_104712.webp' },
             { type: 'image', src: 'assets/optimized/outclass/20260423_101051.webp' },
@@ -300,7 +311,6 @@ document.addEventListener('DOMContentLoaded', () => {
             { type: 'image', src: 'assets/optimized/outclass/20260423_101106.webp' },
             { type: 'image', src: 'assets/optimized/outclass/20260423_101123.webp' },
             { type: 'image', src: 'assets/optimized/outclass/20260423_101218.webp' },
-            // { type: 'image', src: 'assets/optimized/outclass/E5A708BE-2F1D-438B-B012-6D08BE2FEF91.webp' },
             { type: 'image', src: 'assets/optimized/outclass/IMG_6490.webp' },
             { type: 'image', src: 'assets/optimized/outclass/IMG_6534.webp' },
             { type: 'image', src: 'assets/optimized/outclass/IMG_6537.webp' },

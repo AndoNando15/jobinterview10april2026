@@ -1,10 +1,16 @@
 /* Hide Scrollbar but keep functionality */
-.carousel-track, .carousel-track-reverse, .messages-track {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+.carousel-track,
+.carousel-track-reverse,
+.messages-track {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
-.carousel-track::-webkit-scrollbar, .carousel-track-reverse::-webkit-scrollbar, .messages-track::-webkit-scrollbar {
+.carousel-track::-webkit-scrollbar,
+.carousel-track-reverse::-webkit-scrollbar,
+.messages-track::-webkit-scrollbar {
     display: none;
 }
 
@@ -12,15 +18,18 @@
 ::-webkit-scrollbar {
     width: 10px;
 }
+
 ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
+    background: #f1f1f1;
 }
+
 ::-webkit-scrollbar-thumb {
-    background: #cbd5e1; 
+    background: #cbd5e1;
     border-radius: 5px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-    background: #3b82f6; 
+    background: #3b82f6;
 }
 
 /* Background Blob Animations */
@@ -28,12 +37,15 @@
     0% {
         transform: translate(0px, 0px) scale(1);
     }
+
     33% {
         transform: translate(30px, -50px) scale(1.1);
     }
+
     66% {
         transform: translate(-20px, 20px) scale(0.9);
     }
+
     100% {
         transform: translate(0px, 0px) scale(1);
     }
@@ -55,10 +67,11 @@
 .carousel-track {
     display: flex;
     width: max-content;
-    animation: scroll-horizontal 40s linear infinite;
+    animation: scroll-horizontal 80s linear infinite;
 }
 
-.carousel-track:hover, #class-carousel-wrapper:has(.mobile-active) .carousel-track {
+.carousel-track:hover,
+#class-carousel-wrapper:has(.mobile-active) .carousel-track {
     animation-play-state: paused;
 }
 
@@ -66,7 +79,7 @@
 .carousel-track-reverse {
     display: flex;
     width: max-content;
-    animation: scroll-horizontal 40s linear reverse infinite;
+    animation: scroll-horizontal 150s linear reverse infinite;
 }
 
 .carousel-track-reverse:hover {
@@ -74,8 +87,13 @@
 }
 
 @keyframes scroll-horizontal {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 
@@ -84,7 +102,8 @@
 .messages-track {
     display: flex;
     flex-direction: column;
-    animation: scroll-vertical 45s linear infinite; /* Slightly slower for better readability */
+    animation: scroll-vertical 45s linear infinite;
+    /* Slightly slower for better readability */
 }
 
 .message-card {
@@ -105,8 +124,13 @@
 }
 
 @keyframes scroll-vertical {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(calc(-50% - 0.75rem)); }
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(calc(-50% - 0.75rem));
+    }
 }
 
 /* Intersection Observer Reveal Animation */
@@ -126,6 +150,7 @@
     .member-card.mobile-active .absolute {
         opacity: 1 !important;
     }
+
     .member-card.mobile-active h3,
     .member-card.mobile-active p {
         transform: translateY(0) !important;
@@ -136,11 +161,12 @@
    Mobile Auto Center-Reveal for Our Class
    ========================================== */
 @media (max-width: 768px) {
+
     /* Make overlay hidden by default on mobile */
     .member-card .member-overlay {
         position: absolute;
         inset: 0;
-        background: linear-gradient(to top, rgba(17,24,39,0.92) 0%, rgba(17,24,39,0.45) 55%, transparent 100%);
+        background: linear-gradient(to top, rgba(17, 24, 39, 0.92) 0%, rgba(17, 24, 39, 0.45) 55%, transparent 100%);
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
@@ -181,7 +207,7 @@
         transform: translateY(0) !important;
         opacity: 1 !important;
     }
-    
+
     .member-card.mobile-active .member-overlay a {
         pointer-events: auto;
     }
