@@ -239,6 +239,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Toggle the clicked card
             card.classList.toggle('mobile-active');
+
+            // Animation Pause Logic for Mobile
+            const track = document.getElementById('class-carousel');
+            if (track) {
+                const hasActive = !!document.querySelector('.member-card.mobile-active');
+                track.style.animationPlayState = hasActive ? 'paused' : 'running';
+            }
         }
     });
 
