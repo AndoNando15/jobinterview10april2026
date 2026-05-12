@@ -77,6 +77,10 @@
                 <a href="#messages"
                     class="text-sm font-medium hover:text-blue-500 transition-colors nav-link">Messages</a>
                 <a href="#quotes" class="text-sm font-medium hover:text-blue-500 transition-colors nav-link">Quotes</a>
+                <a href="javascript:void(0)" id="kicau-nav-link"
+                    class="px-4 py-2 bg-gradient-to-r from-red-500 to-blue-500 text-white rounded-full text-xs font-bold hover:shadow-lg hover:scale-105 transition-all">
+                    KICAU MANIA <i class="fa-solid fa-dove ml-1"></i>
+                </a>
 
                 <!-- Theme Toggle Desktop -->
                 <button id="theme-toggle"
@@ -108,6 +112,9 @@
             <a href="#documentation" class="mobile-link text-base font-medium dark:text-gray-200">Documentation</a>
             <a href="#messages" class="mobile-link text-base font-medium dark:text-gray-200">Messages</a>
             <a href="#quotes" class="mobile-link text-base font-medium dark:text-gray-200">Quotes</a>
+            <a href="javascript:void(0)" id="kicau-mobile-link"
+                class="mobile-link text-base font-bold bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent">Kicau
+                Mania <i class="fa-solid fa-dove ml-1 text-red-500"></i></a>
         </div>
     </header>
 
@@ -865,6 +872,22 @@
             </div>
         </div>
     </footer>
+
+    <!-- Kicau Mania Modal -->
+    <div id="kicau-modal"
+        class="fixed inset-0 z-[120] bg-black/80 backdrop-blur-md hidden items-center justify-center opacity-0 transition-opacity duration-500">
+        <div class="relative w-full h-full max-w-5xl max-h-[90vh] md:w-[90vw] md:h-[85vh] bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-2xl transform scale-95 transition-transform duration-500"
+            id="kicau-modal-content">
+            <!-- Close Button -->
+            <button id="kicau-modal-close"
+                class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/20 hover:bg-red-500 text-white flex items-center justify-center backdrop-blur-md transition-all shadow-lg">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <!-- Iframe for Kicau Mania -->
+            <iframe id="kicau-iframe" src="" class="w-full h-full border-none" allow="camera; microphone"></iframe>
+        </div>
+    </div>
 
     <!-- Background Music -->
     <audio id="bg-music" loop>

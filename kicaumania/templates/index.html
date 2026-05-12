@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kicau Mania - Touch Your Nose!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- MediaPipe Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Kicau Mania</h1>
+            <p class="instruction">Sentuh hidungmu untuk mengicau...</p>
+        </header>
+
+        <main>
+            <div class="video-wrapper">
+                <video id="input_video" style="display:none"></video>
+                <canvas id="output_canvas"></canvas>
+                
+                <!-- Sticker Container -->
+                <div id="sticker-container"></div>
+                
+                <!-- Text Feedback -->
+                <div id="text-feedback">kicauu....kicau....</div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="status-indicator">
+                <span id="status-text">Menyiapkan kamera...</span>
+                <div class="pulse"></div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Audio -->
+    <audio id="kicau-sound" src="{{ url_for('static', filename='sound_kicau.mp3') }}" preload="auto" loop></audio>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

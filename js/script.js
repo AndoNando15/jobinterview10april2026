@@ -810,16 +810,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Initialize theme based on preference (Default to LIGHT)
-    const savedTheme = localStorage.getItem('theme');
+    const updateThemeIcons = () => {
+        const isDark = htmlElement.classList.contains('dark');
+        const desktopMoon = themeToggleBtn.querySelector('.fa-moon');
+        const desktopSun = themeToggleBtn.querySelector('.fa-sun');
+        const mobileMoon = themeToggleMobileBtn.querySelector('.fa-moon');
+        const mobileSun = themeToggleMobileBtn.querySelector('.fa-sun');
 
-    if (savedTheme === 'dark') {
-        setTheme(true);
-    } else {
-        setTheme(false);
-    }
+        if (isDark) {
+            desktopMoon.classList.add('hidden');
+            desktopSun.classList.remove('hidden');
+            mobileMoon.classList.add('hidden');
+            mobileSun.classList.remove('hidden');
+        } else {
+            desktopMoon.classList.remove('hidden');
+            desktopSun.classList.add('hidden');
+            mobileMoon.classList.remove('hidden');
+            mobileSun.classList.add('hidden');
+        }
+    };
 
-    // Toggle events
     if (themeToggleBtn) {
         themeToggleBtn.addEventListener('click', () => {
             setTheme(!htmlElement.classList.contains('dark'));
@@ -831,4 +841,70 @@ document.addEventListener('DOMContentLoaded', () => {
             setTheme(!htmlElement.classList.contains('dark'));
         });
     }
+
+    /* =========================================
+       10. Kicau Mania Modal Logic
+    ========================================= */
+    const kicauNavLink = document.getElementById('kicau-nav-link');
+    const kicauMobileLink = document.getElementById('kicau-mobile-link');
+    const kicauModal = document.getElementById('kicau-modal');
+    const kicauModalContent = document.getElementById('kicau-modal-content');
+    const kicauModalClose = document.getElementById('kicau-modal-close');
+    const kicauIframe = document.getElementById('kicau-iframe');
+
+    const openKicauModal = () => {
+        // Mute background music
+        if (bgMusic) bgMusic.muted = true;
+
+        // Set iframe source
+        kicauIframe.src = 'kicaumania/index.html';
+
+        // Show modal
+        kicauModal.classList.remove('hidden');
+        kicauModal.classList.add('flex');
+        
+        setTimeout(() => {
+            kicauModal.classList.remove('opacity-0');
+            kicauModalContent.classList.remove('scale-95');
+            kicauModalContent.classList.add('scale-100');
+        }, 10);
+
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeKicauModal = () => {
+        kicauModal.classList.add('opacity-0');
+        kicauModalContent.classList.remove('scale-100');
+        kicauModalContent.classList.add('scale-95');
+
+        setTimeout(() => {
+            kicauModal.classList.add('hidden');
+            kicauModal.classList.remove('flex');
+            // Clear iframe source to stop camera/audio inside
+            kicauIframe.src = '';
+            document.body.style.overflow = '';
+
+            // Unmute background music with a delay (e.g., 2 seconds)
+            setTimeout(() => {
+                if (bgMusic) bgMusic.muted = false;
+            }, 2000); 
+        }, 500);
+    };
+
+    if (kicauNavLink) kicauNavLink.addEventListener('click', openKicauModal);
+    if (kicauMobileLink) kicauMobileLink.addEventListener('click', openKicauModal);
+    if (kicauModalClose) kicauModalClose.addEventListener('click', closeKicauModal);
+
+    // Close on background click
+    kicauModal.addEventListener('click', (e) => {
+        if (e.target === kicauModal) closeKicauModal();
+    });
+
+    // Add Esc key support for Kicau Modal
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !kicauModal.classList.contains('hidden')) {
+            closeKicauModal();
+        }
+    });
+
 });
