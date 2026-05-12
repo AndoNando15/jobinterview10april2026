@@ -70,7 +70,7 @@ function checkCollision() {
 function triggerEffect() {
     isTriggered = true;
     statusText.innerText = "KICAUUUU!";
-    
+
     // Text feedback shows on touch
 
     // Show Text
@@ -107,9 +107,10 @@ const faceMesh = new FaceMesh({
 });
 faceMesh.setOptions({
     maxNumFaces: 1,
-    refineLandmarks: true,
+    refineLandmarks: false,
     minDetectionConfidence: 0.5,
-    minTrackingConfidence: 0.5
+    minTrackingConfidence: 0.5,
+    selfieMode: true
 });
 faceMesh.onResults(onResults);
 
@@ -118,19 +119,26 @@ const hands = new Hands({
 });
 hands.setOptions({
     maxNumHands: 1,
-    modelComplexity: 1,
+    modelComplexity: 0,
     minDetectionConfidence: 0.5,
-    minTrackingConfidence: 0.5
+    minTrackingConfidence: 0.5,
+    selfieMode: true
 });
 hands.onResults(onHandResults);
 
+let skipFrame = false;
 const camera = new Camera(videoElement, {
     onFrame: async () => {
-        await faceMesh.send({image: videoElement});
-        await hands.send({image: videoElement});
+        // Alternate frames to reduce CPU load by 50%
+        if (skipFrame) {
+            await faceMesh.send({ image: videoElement });
+        } else {
+            await hands.send({ image: videoElement });
+        }
+        skipFrame = !skipFrame;
     },
-    width: 1280,
-    height: 720
+    width: 480,
+    height: 270
 });
 
 camera.start().then(() => {
